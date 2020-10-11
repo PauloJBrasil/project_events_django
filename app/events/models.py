@@ -14,7 +14,6 @@ class Age_rating(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=150)
-    age_rating = models.ForeignKey(Age_rating, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title
@@ -26,7 +25,8 @@ class Event(models.Model):
     date = models.DateTimeField(null=False)
     limit_ticket = models.IntegerField(default=None, editable=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True)
-    
+    age_rating = models.ForeignKey(Age_rating, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.title
 
