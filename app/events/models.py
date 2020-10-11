@@ -19,7 +19,7 @@ class Event(models.Model):
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - timedelta(days=1)
 
-class age_rating(models.Model):
+class Age_rating(models.Model):
     age = models.IntegerField(default=None)
     public = models.CharField(max_length=150)
 
@@ -28,7 +28,6 @@ class age_rating(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=150)
-    event = models.ForeignKey(Event, on_delete=models.PROTECT)
     age_rating = models.ForeignKey(age_rating, on_delete=models.PROTECT)
     def __str__(self):
         return self.title
